@@ -17,10 +17,9 @@ LABEL maintainer="UC San Diego ITS/ETS <ets-consult@ucsd.edu>"
 USER root
 
 # GDAL reference variables and installation.  
-
-RUN	apt-get -y install htop aria2 nmap traceroute 
-RUN apt-get -y install software-properties-common
 RUN apt-get update
+RUN apt-get -y install software-properties-common
+RUN	apt-get -y install htop aria2 nmap traceroute 
 RUN apt-add-repository ppa:ubuntugis/ubuntugis-unstable
 RUN apt-get update
 RUN apt-get -y install libgdal-dev
