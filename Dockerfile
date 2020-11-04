@@ -16,9 +16,19 @@ LABEL maintainer="UC San Diego ITS/ETS <ets-consult@ucsd.edu>"
 # 2) change to root to install packages
 USER root
 
-RUN	apt-get -y install htop aria2 nmap traceroute libgdal-dev libgdal1h
+# GDAL reference variables and installation.  
 
-# 3) install packages
+RUN	apt-get -y install htop aria2 nmap traceroute 
+RUN apt-add-repository ppa:ubuntugis/ubuntugis-unstable
+RUN apt-get update
+RUN apt-get -y install libgdal-dev
+
+RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
+RUN export C_INCLUDE_PATH=/usr/include/gdal
+RUN pip install GDAL
+
+
+# 3) install other packages
 RUN pip install --no-cache-dir networkx scipy python-louvain geopandas descartes 
 RUN pip install --no-cache-dir fiona pyproj rtree shapely mesa mesa-geo
 
