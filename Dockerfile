@@ -19,6 +19,11 @@ USER root
 # GDAL reference variables and installation.  
 RUN apt-get update
 RUN apt-get -y install software-properties-common
+
+#Install C++ (GNU Compiler) before installing GDAL
+RUN apt-get update
+RUN apt-get install gcc
+
 RUN	apt-get -y install htop aria2 nmap traceroute 
 RUN apt-add-repository ppa:ubuntugis/ubuntugis-unstable
 RUN apt-get update
